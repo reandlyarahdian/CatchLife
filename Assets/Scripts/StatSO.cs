@@ -18,6 +18,13 @@ public class ObjectsToSpawn
     public Material material;
 }
 
+public enum Power
+{
+    Jump,
+    Walk,
+    No
+}
+
 [CreateAssetMenu(fileName = "StatSO", menuName = "Character Stats")]
 public class StatSO : ScriptableObject
 {
@@ -26,6 +33,10 @@ public class StatSO : ScriptableObject
     public bool isObject;
 
     public ObjectsToSpawn toSpawn;
+
+    public Power power;
+
+    public int TurnUps;
 
     public int health
     {
@@ -82,7 +93,7 @@ public class StatSO : ScriptableObject
         var skins = obj.GetComponentsInChildren<SkinnedMeshRenderer>();
         foreach(SkinnedMeshRenderer skin in skins)
             skin.material = toSpawn.material;
-        obj.GetComponent<CharacterFall>().Stat(stat);
+        obj.GetComponent<CharacterFall>().Stat(stat, power, TurnUps);
         return obj;
     }
 }

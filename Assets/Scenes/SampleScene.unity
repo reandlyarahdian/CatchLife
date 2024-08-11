@@ -2167,14 +2167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 3
   prefab:
-  - {fileID: 11400000, guid: 243c076d052dac243b51e71bb0135e05, type: 2}
-  - {fileID: 11400000, guid: d3bd0b9e30a810542b32dff2e1ff8f37, type: 2}
-  - {fileID: 11400000, guid: 87728bf3f530d8c48b70a01ea3d8f829, type: 2}
-  - {fileID: 11400000, guid: 39aabd901f8c4ac49a8ba9b945b43136, type: 2}
-  - {fileID: 11400000, guid: 903dfe112147d8541877b0d0544fc054, type: 2}
-  - {fileID: 11400000, guid: 3da7e97b219146147b1700ecd22896a4, type: 2}
-  - {fileID: 11400000, guid: 65e67ce3c599c0840b1c628ddf5c4490, type: 2}
-  - {fileID: 11400000, guid: 04192e99e74e05840ac96a90be26e194, type: 2}
+  - {fileID: 11400000, guid: 9ab169ad173cfed45bd304ef43c46062, type: 2}
 --- !u!4 &1904198071
 Transform:
   m_ObjectHideFlags: 0

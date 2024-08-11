@@ -17,6 +17,9 @@ public class CharacterMove : MonoBehaviour
     public float jumpHeight;
     private PlayerMove inputs;
     private float horizontalInput;
+    bool active;
+    int num;
+    float def;
 
     private void Awake()
     {
@@ -34,6 +37,13 @@ public class CharacterMove : MonoBehaviour
         {
             horizontalInput = ctx.ReadValue<float>();
         };
+
+        inputs.Player.Jump.performed += ctx =>
+        {
+            jumping = ctx.ReadValueAsButton();
+        };
+
+        def = speed;
     }
     
     void Update() 
@@ -42,6 +52,7 @@ public class CharacterMove : MonoBehaviour
         {
             direction = new Vector3(0, 0, horizontalInput);
             velocity = direction * speed;
+
             if (horizontalInput < 0 && flip == false) 
             {
                 flip = true;
@@ -56,6 +67,17 @@ public class CharacterMove : MonoBehaviour
             {
                 anim.SetFloat("Move", Mathf.Abs(horizontalInput));
             }
+            if (active && jumping)
+            {
+                StartCoroutine(Timer());
+                active = false;
+            }
+            else if(!active && !jumping)
+            {
+                StopCoroutine(Timer());
+                speed = def;
+            }
+
         }
         else 
         {
@@ -70,11 +92,27 @@ public class CharacterMove : MonoBehaviour
         if (other.CompareTag("Object"))
         {
             anim.SetBool("Jump", true);
+            if (other.GetComponent<CharacterFall>().power == global::Power.Walk)
+            {
+                active = true;
+                num = other.GetComponent<CharacterFall>().up;
+            }
         }
     }
 
     public void AfterJump()
     {
         anim.SetBool("Jump", false);
+    }
+
+    IEnumerator Timer()
+    {
+        float timer = 3;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            speed = num;
+            yield return new WaitForSeconds(1);
+        }
     }
 }

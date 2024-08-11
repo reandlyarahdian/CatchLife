@@ -20,3 +20,5 @@ MonoBehaviour:
     prefab: {fileID: 5776010835106431172, guid: 9c5e2acd076ab2045bb1545b8f855e34,
       type: 3}
     material: {fileID: 2100000, guid: 78ca43db30d83f548b74cbf3dfb1e8aa, type: 2}
+  power: 2
+  TurnUps: 0

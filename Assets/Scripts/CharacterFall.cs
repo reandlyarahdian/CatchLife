@@ -16,10 +16,16 @@ public class CharacterFall : MonoBehaviour
 
     bool isAnim;
 
-    public void Stat(Stat stat)
+    public Power power;
+
+    public int up;
+
+    public void Stat(Stat stat, Power powerU, int ups)
     {
         point = stat.point;
         health = stat.health;
+        power = powerU;
+        up = ups;
     }
 
     private void Awake()
